@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_11_06_170752) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer "player_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_11_06_170752) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.integer "team_id"
     t.string "winloss"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
