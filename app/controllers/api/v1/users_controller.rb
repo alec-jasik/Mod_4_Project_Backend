@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApplicationController
         # byebug
         if user.valid?
             user.save
+            Team.create!({user_id: user.id})
             render json: {user: user}, status: :created
         else
             render json: {error: "Failed to create user"}, status: :not_acceptable

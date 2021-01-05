@@ -3,7 +3,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :username
       t.string :password_digest
-      t.string :winloss
+      t.integer :wins, default: 0
+      t.integer :losses, default: 0
       t.timestamps
     end
   end

@@ -199,7 +199,7 @@ nba_player_list.each do |name, team_name, overall, player_img|
     Player.create(name: name, team_name: team_name, overall: overall, player_img: player_img)
 end
 
-test_user = User.create(username: "test_user", password: "pass", winloss: "0-0")
+test_user = User.create(username: "test_user", password: "pass")
 official_atlanta_hawks = Team.create(user_id: User.first.id)
 hawks_player1 = PlayerTeam.create(player_id: Player.first.id, team_id: Team.first.id)
 hawks_player2 = PlayerTeam.create(player_id: Player.second.id, team_id: Team.first.id)
