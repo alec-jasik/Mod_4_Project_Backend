@@ -10,9 +10,9 @@ class Api::V1::UsersController < ApplicationController
         if user.valid?
             user.save
             Team.create!({user_id: user.id})
-            render json: {user: user}, status: :created
+            render json: {user: user, token: JWT.encode({user_id: user.id}, "secret")}, include: [:team]
         else
-            render json: {error: "Failed to create user"}, status: :not_acceptable
+            render json: {error: "Username already exists. Try a different username."}, status: :not_acceptable
         end
     end
 
