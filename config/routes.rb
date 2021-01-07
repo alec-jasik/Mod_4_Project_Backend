@@ -21,6 +21,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :player_teams
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
       post "/login", to: "auth#create"
     end
   end
