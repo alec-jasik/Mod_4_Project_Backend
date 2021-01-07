@@ -10,10 +10,15 @@ class Api::V1::UsersController < ApplicationController
         if user.valid?
             user.save
             Team.create!({user_id: user.id})
-            render json: {user: user}, status: :created
+            render json: {user: user, token: JWT.encode({user_id: user.id}, "secret")}, include: [:team]
         else
-            render json: {error: "Failed to create user"}, status: :not_acceptable
+            render json: {error: "Error. Please try again."}, status: :not_acceptable
         end
+    end
+
+    def get_user
+        user = self.current_user
+        render json: user, include: [:team, :players]
     end
 
     private
