@@ -6,6 +6,7 @@ class Api::V1::PlayerTeamsController < ApplicationController
 
     def show
         player_team = PlayerTeam.find(params[:id])
+        render json: player_team
     end
 
     def create
