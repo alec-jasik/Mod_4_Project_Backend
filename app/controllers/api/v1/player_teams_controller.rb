@@ -4,9 +4,18 @@ class Api::V1::PlayerTeamsController < ApplicationController
         render json: playerteams
     end
 
+    def show
+        player_team = PlayerTeam.find(params[:id])
+    end
+
     def create
         player_team = PlayerTeam.create(player_team_params)
         render json: {player_team: player_team}
+    end
+
+    def destroy
+        player_team = PlayerTeam.find(params[:id])
+        player_team.destroy
     end
 
     private
